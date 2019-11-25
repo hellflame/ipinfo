@@ -1,10 +1,21 @@
 package main
 
 import (
-	"github.com/hellflame/iplocate-go/iplocate"
+	"fmt"
+	"github.com/hellflame/ipinfo/ipinfo"
+	"github.com/spf13/cobra"
 )
+
+func runner() *cobra.Command {
+	cmd := &cobra.Command{
+		Use: "iplocate",
+		Short: "",
+
+	}
+	return cmd
+}
 
 func main() {
 	//iplocate.IpInfo(net.IP{127, 0, 0, 1})
-	iplocate.IpInfo(nil)
+	fmt.Println(ipinfo.IpInfo(nil))
 }

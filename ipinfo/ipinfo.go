@@ -1,4 +1,4 @@
-package iplocate
+package ipinfo
 
 import (
 	"encoding/json"
@@ -13,7 +13,7 @@ func getIpList(host string) []net.IP {
 	return addrs
 }
 
-func IpInfo(ip net.IP) {
+func IpInfo(ip net.IP)(result map[string]interface{}) {
 	var url string
 	if ip == nil {
 		url = "https://ipinfo.io/json"
@@ -26,12 +26,11 @@ func IpInfo(ip net.IP) {
 		return
 	}
 	defer func() {_ = resp.Body.Close()}()
-	var result map[string]interface{}
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	if err != nil {
 		log.Fatal("error while parsing result")
 		return
 	}
-	fmt.Println(result)
+	return
 }
 
