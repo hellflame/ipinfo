@@ -80,7 +80,7 @@ func ParseInfo(info map[string]interface{}) {
 	}
 	var keys []string
 	for k := range info{
-		if k != "ip"{
+		if k != "ip" && k != "readme"{
 			keys = append(keys, k)
 		}
 	}
