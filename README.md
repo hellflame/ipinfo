@@ -1,4 +1,4 @@
-# Iplocate-go
+# ipinfo
 
 little tool for ipinfo lookup
 
