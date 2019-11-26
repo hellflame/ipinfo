@@ -6,11 +6,25 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"regexp"
 )
+
+var regIsHostname *regexp.Regexp
+
+func init() {
+	regIsHostname, _ = regexp.Compile(`\d+\.\d+\.\d+\.\d+`)
+}
 
 func getIpList(host string) []net.IP {
 	addrs, _ := net.LookupIP(host)
 	return addrs
+}
+
+func IsHostname(host string) bool {
+	if regIsHostname.Match([]byte(host)){
+		return false
+	}
+	return true
 }
 
 func IpInfo(ip net.IP)(result map[string]interface{}) {
