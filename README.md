@@ -4,6 +4,12 @@ little tool for ipinfo lookup
 
 ref API: `https://ipinfo.io`
 
+## install
+
+```bash
+go get github.com/hellflame/ipinfo
+```
+
 ## usage
 
 ```
