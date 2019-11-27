@@ -4,11 +4,36 @@ little tool for ipinfo lookup
 
 ref API: `https://ipinfo.io`
 
+> this project is a migration from python version of 
+> iplocate https://github.com/hellflame/iplocate
+
 ## install
 
 ```bash
-go get github.com/hellflame/ipinfo
+go get -u github.com/hellflame/ipinfo
 ```
+
+be sure `$GOPATH/bin` is in `$PATH`, 
+executable program will be installed there
+
+> if you can't use go get
+
+download source code
+
+```bash
+git clone https://github.com/hellflame/ipinfo
+cd ipinfo
+go install
+```
+
+you can't just use `go build` to get executable binary, 
+it will told you (because there is a `ipinfo` dir inside it)
+
+```
+go build: build output "ipinfo" already exists and is a directory
+```
+
+use `go build -o your-preferred-name` instead
 
 ## usage
 
@@ -88,3 +113,17 @@ Timezone            Asia/Shanghai
 ipinfo www.bing.com 8.8.8.8 
 ```
 
+### 5. as part of your program
+
+```go
+package main
+import (
+    "github.com/hellflame/ipinfo/ipinfo"
+    "fmt"
+    "net"
+)
+
+func main() {
+    fmt.Println(ipinfo.IpInfo(net.ParseIP("8.8.8.8")))
+}
+```

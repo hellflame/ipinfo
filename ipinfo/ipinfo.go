@@ -18,6 +18,7 @@ func init() {
 	regIsHostname, _ = regexp.Compile(`\d+\.\d+\.\d+\.\d+`)
 }
 
+// get ip list of given hostname
 func IpList(host string) []net.IP {
 	var addrs []net.IP
 	if isHostname(host) {
@@ -29,6 +30,7 @@ func IpList(host string) []net.IP {
 	return addrs
 }
 
+// check if given string is a hostname
 func isHostname(host string) bool {
 	if regIsHostname.Match([]byte(host)){
 		return false
@@ -58,6 +60,7 @@ func IpInfo(ip net.IP)(result map[string]interface{}) {
 	return
 }
 
+// get spaces left for others
 func calcSpace(word string, maxLength int) int {
 	targetL := len(word)
 	if maxLength > targetL {
@@ -66,7 +69,7 @@ func calcSpace(word string, maxLength int) int {
 	return 0
 }
 
-
+// output beautified result to console
 func ParseInfo(info map[string]interface{}) {
 	ip, ok := info["ip"]
 	if !ok {
@@ -92,6 +95,7 @@ func ParseInfo(info map[string]interface{}) {
 	}
 }
 
+// combine Ipinfo & ParseInfo together, lazy function
 func Display(ip net.IP) {
 	ParseInfo(IpInfo(ip))
 }
