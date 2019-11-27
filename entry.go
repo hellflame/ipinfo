@@ -8,21 +8,20 @@ import (
 func runner() *cobra.Command {
 	//var target []string
 	cmd := &cobra.Command{
-		Use: "ipinfo",
-		Short: "tool for ip info lookup",
+		Use:     "ipinfo",
+		Short:   "tool for ip info lookup",
 		Version: ipinfo.Version,
 		Run: func(cmd *cobra.Command, args []string) {
 			if len(args) == 0 {
 				ipinfo.Display(nil)
 				return
 			}
-			for _, target := range args{
+			for _, target := range args {
 				for _, ip := range ipinfo.IpList(target) {
 					ipinfo.Display(ip)
 				}
 			}
 		},
-
 	}
 	return cmd
 }

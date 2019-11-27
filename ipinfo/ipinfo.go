@@ -23,7 +23,7 @@ func IpList(host string) []net.IP {
 	var addrs []net.IP
 	if isHostname(host) {
 		addrs, _ = net.LookupIP(host)
-	}else {
+	} else {
 		addrs = []net.IP{net.ParseIP(host)}
 	}
 
@@ -32,18 +32,18 @@ func IpList(host string) []net.IP {
 
 // check if given string is a hostname
 func isHostname(host string) bool {
-	if regIsHostname.Match([]byte(host)){
+	if regIsHostname.Match([]byte(host)) {
 		return false
 	}
 	return true
 }
 
 // fetch API result as map
-func IpInfo(ip net.IP)(result map[string]interface{}) {
+func IpInfo(ip net.IP) (result map[string]interface{}) {
 	var url string
 	if ip == nil {
 		url = "https://ipinfo.io/json"
-	}else {
+	} else {
 		url = fmt.Sprintf("https://ipinfo.io/%s/json", ip)
 	}
 	resp, err := http.Get(url)
@@ -51,7 +51,7 @@ func IpInfo(ip net.IP)(result map[string]interface{}) {
 		log.Fatal("error while fetching ipinfo.io")
 		return
 	}
-	defer func() {_ = resp.Body.Close()}()
+	defer func() { _ = resp.Body.Close() }()
 	err = json.NewDecoder(resp.Body).Decode(&result)
 	if err != nil {
 		log.Fatal("error while parsing result")
@@ -75,15 +75,15 @@ func ParseInfo(info map[string]interface{}) {
 	if !ok {
 		return
 	}
-	if runtime.GOOS == "windows"{
+	if runtime.GOOS == "windows" {
 		fmt.Println(strings.Repeat(" ", 5) + ip.(string))
-	}else {
+	} else {
 		fmt.Printf("\n\033[01;32m%s\033[00m\n\n",
-			strings.Repeat(" ", 5) + ip.(string))
+			strings.Repeat(" ", 5)+ip.(string))
 	}
 	var keys []string
-	for k := range info{
-		if k != "ip" && k != "readme"{
+	for k := range info {
+		if k != "ip" && k != "readme" {
 			keys = append(keys, k)
 		}
 	}
