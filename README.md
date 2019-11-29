@@ -35,6 +35,8 @@ go build: build output "ipinfo" already exists and is a directory
 
 use `go build -o your-preferred-name` instead
 
+download binary: [https://github.com/hellflame/ipinfo/releases](https://github.com/hellflame/ipinfo/releases)
+
 ## usage
 
 ```
