@@ -21,5 +21,6 @@ build-linux: dist-path
 build-windows: dist-path
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ${BINARY_PATH}/${BINARY_NAME}.exe
 
-
+clean:
+	rm -rf ${BINARY_PATH}
 
