@@ -40,14 +40,16 @@ download binary: [https://github.com/hellflame/ipinfo/releases](https://github.c
 ## usage
 
 ```
+usage: ipinfo [-h] [-v] [HOST [HOST ...]]
+
 tool for ip info lookup
 
-Usage:
-  ipinfo [flags]
+positional arguments:
+  HOST           target ip/host
 
-Flags:
-  -h, --help      help for ipinfo
-      --version   version for ipinfo
+optional arguments:
+  -h, --help     show this help message
+  -v, --version  show version info
 ```
 
 ### 1. current host info

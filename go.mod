@@ -2,7 +2,4 @@ module github.com/hellflame/ipinfo
 
 go 1.13
 
-require (
-	github.com/spf13/cobra v0.0.5
-	github.com/spf13/pflag v1.0.5 // indirect
-)
+require github.com/hellflame/argparse v0.1.1
