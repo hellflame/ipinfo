@@ -1,4 +1,4 @@
-package ipinfo
+package main
 
 import (
 	"encoding/json"
@@ -12,13 +12,16 @@ import (
 	"strings"
 )
 
+// MaxOutputWidth defines display width
+const MaxOutputWidth = 20
+
 var regIsHostname *regexp.Regexp
 
 func init() {
 	regIsHostname, _ = regexp.Compile(`\d+\.\d+\.\d+\.\d+`)
 }
 
-// get ip list of given hostname
+// IpList fetch the ip list of given hostname
 func IpList(host string) []net.IP {
 	var addrs []net.IP
 	if isHostname(host) {
@@ -38,7 +41,7 @@ func isHostname(host string) bool {
 	return true
 }
 
-// fetch API result as map
+// IpInfo fetch API result and return result map
 func IpInfo(ip net.IP) (result map[string]interface{}) {
 	var url string
 	if ip == nil {
@@ -69,7 +72,7 @@ func calcSpace(word string, maxLength int) int {
 	return 0
 }
 
-// output beautified result to console
+// ParseInfo will show beautified result to console
 func ParseInfo(info map[string]interface{}) {
 	ip, ok := info["ip"]
 	if !ok {
@@ -95,7 +98,7 @@ func ParseInfo(info map[string]interface{}) {
 	}
 }
 
-// combine Ipinfo & ParseInfo together, lazy function
+// Display combines Ipinfo & ParseInfo together, quick function
 func Display(ip net.IP) {
 	ParseInfo(IpInfo(ip))
 }

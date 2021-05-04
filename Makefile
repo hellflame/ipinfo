@@ -5,7 +5,7 @@ BINARY_NAME = ipinfo
 tidy:
 	find . -name "*.go" -type f -not -path "./vendor/*" | xargs -n1 go fmt
 
-build: build-darwin build-linux build-windows
+build: clean tidy build-darwin build-linux build-windows
 
 dist-path:
 	mkdir -p ${BINARY_PATH}

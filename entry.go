@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"github.com/hellflame/argparse"
-	"github.com/hellflame/ipinfo/ipinfo"
+    "fmt"
+    "github.com/hellflame/argparse"
 )
+
+// Version info of the program
+const Version = "0.2.1"
 
 func main() {
 	parser := argparse.NewParser("ipinfo", "tool for ip info lookup",
@@ -16,16 +18,16 @@ func main() {
 		return
 	}
 	if *showVersion {
-		fmt.Println(ipinfo.Version)
+		fmt.Println(Version)
 		return
 	}
 
 	if target == nil || len(*target) == 0 {
-		ipinfo.Display(nil)
+		Display(nil)
 	} else {
 		for _, target := range *target {
-			for _, ip := range ipinfo.IpList(target) {
-				ipinfo.Display(ip)
+			for _, ip := range IpList(target) {
+				Display(ip)
 			}
 		}
 	}
