@@ -7,7 +7,7 @@ ref API: `https://ipinfo.io`
 > this project is a migration from python version of 
 > iplocate https://github.com/hellflame/iplocate
 
-## install
+## Install
 
 ```bash
 go get -u github.com/hellflame/ipinfo
@@ -16,9 +16,7 @@ go get -u github.com/hellflame/ipinfo
 be sure `$GOPATH/bin` is in `$PATH`, 
 executable program will be installed there
 
-> if you can't use go get
-
-download source code
+if you can't use `go get`, download source code
 
 ```bash
 git clone https://github.com/hellflame/ipinfo
@@ -26,18 +24,9 @@ cd ipinfo
 go install
 ```
 
-you can't just use `go build` to get executable binary, 
-it will told you (because there is a `ipinfo` dir inside it)
+you can also download binary: [https://github.com/hellflame/ipinfo/releases](https://github.com/hellflame/ipinfo/releases)
 
-```
-go build: build output "ipinfo" already exists and is a directory
-```
-
-use `go build -o your-preferred-name` instead
-
-download binary: [https://github.com/hellflame/ipinfo/releases](https://github.com/hellflame/ipinfo/releases)
-
-## usage
+## Usage
 
 ```
 usage: ipinfo [-h] [-v] [HOST [HOST ...]]
@@ -122,7 +111,7 @@ ipinfo www.bing.com 8.8.8.8
 ```go
 package main
 import (
-    "github.com/hellflame/ipinfo/ipinfo"
+    "github.com/hellflame/ipinfo"
     "fmt"
     "net"
 )
