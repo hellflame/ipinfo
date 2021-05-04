@@ -1,8 +1,8 @@
 package main
 
 import (
-    "fmt"
-    "github.com/hellflame/argparse"
+	"fmt"
+	"github.com/hellflame/argparse"
 )
 
 // Version info of the program
