@@ -1,3 +1,9 @@
+## [0.2.2] - 2021-08-11
+
+### Updated
+
+- update argparse version
+
 ## [0.2.1] - 2021-05-05
 
 ### Updated

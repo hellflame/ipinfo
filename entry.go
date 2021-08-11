@@ -6,7 +6,7 @@ import (
 )
 
 // Version info of the program
-const Version = "0.2.1"
+const Version = "0.2.2"
 
 func main() {
 	parser := argparse.NewParser("ipinfo", "tool for ip info lookup",
@@ -14,7 +14,11 @@ func main() {
 	showVersion := parser.Flag("v", "version", &argparse.Option{Help: "show version info"})
 	target := parser.Strings("ip", "host", &argparse.Option{Positional: true, Help: "target ip/host"})
 	if e := parser.Parse(nil); e != nil {
-		fmt.Println(e.Error())
+		switch e.(type) {
+		case argparse.BreakAfterHelp:
+		default:
+			fmt.Println(e.Error())
+		}
 		return
 	}
 	if *showVersion {
