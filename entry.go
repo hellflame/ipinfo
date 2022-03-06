@@ -6,7 +6,7 @@ import (
 )
 
 // Version info of the program
-const Version = "0.2.3"
+const Version = "0.2.4"
 
 func main() {
 	parser := argparse.NewParser("ipinfo", "tool for ip info lookup",
